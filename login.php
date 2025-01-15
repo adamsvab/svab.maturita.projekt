@@ -32,8 +32,8 @@ $invalid=0;
 
 if(isset($_POST['login'])){
 
-    $email=$_POST['email'];
-    $password=md5($_POST['password']);
+    $email = mysqli_real_escape_string($con, $_POST['email']); 
+    $password = md5(mysqli_real_escape_string($con, $_POST['password'])); 
 
     $sql="select name, surname, email from `users` where email='$email' and password='$password'";
 

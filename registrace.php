@@ -39,10 +39,10 @@ $success=0;
 
 if(isset($_POST['register'])){
 
-    $name=$_POST['name'];
-    $surname=$_POST['surname'];
-    $email=$_POST['email'];
-    $password=$_POST['password'];
+    $name=mysqli_real_escape_string($con, $_POST['name']);
+    $surname=mysqli_real_escape_string($con, $_POST['surname'] );
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $password=mysqli_real_escape_string($con, $_POST['password']);
 
     $sql="select * from `users` where email='$email'";
 
