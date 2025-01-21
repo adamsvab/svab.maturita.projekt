@@ -17,7 +17,7 @@ include "connect.php";
         <th>Příjmení</th>
         <th>Datum vytvoření</th>
         <th>Stav</th>
-        <th>Změna</th>
+        <th></th>
     </tr>
 
 
@@ -36,13 +36,14 @@ $sqlstat = mysqli_query($con, $sql);
 if($sqlstat) {
 
     while($row = mysqli_fetch_assoc($sqlstat)) {
-
+          
+        
         $id = $row['id'];
         $name = $row['name'];
         $surname = $row['surname'];
         $create = $row['created_at'];
         $state = $row['state'];
-
+        
 
     echo "<tr>        
             <td>$id</td>
@@ -50,8 +51,9 @@ if($sqlstat) {
             <td>$surname</td>
             <td>$create</td>
             <td>$state</td>
-          </tr>
-        ";
+            <td><a href='detail.php?cislo_objednavky=$id'><input type='submit' name='detail_btn' value='Detail'></a></td>
+          </tr>";
+        
 
         }
 

@@ -63,11 +63,11 @@ if(isset($_POST['login'])){
 <?php
 
 if($invalid){
-    echo '<script>alert("Špatné heslo, zkuste to znovu")</script>';;
+    echo '<script>alert("Špatné heslo, zkuste to znovu")</script>';
 }
 
 if($logged){
-    echo '<script>alert("Jste úspěšně přihlášeni")</script>';;
+    echo '<script>alert("Jste úspěšně přihlášeni")</script>';
 }
 
 ?>
