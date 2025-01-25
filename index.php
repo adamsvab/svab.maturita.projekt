@@ -13,7 +13,7 @@ include "connect.php";
 
 <?php
 
-$sql = "SELECT name, image, description, price FROM products";
+$sql = "SELECT id, name, image, description, price FROM products";
 
 $sqlstat=mysqli_query($con,$sql);
 
@@ -27,12 +27,15 @@ if($sqlstat) {
                 
             // ZAČÁTEK SPRÁVNÝ KOD
             echo "<div class='product'>";
-            //echo "<img src='" . $row['image'] . "' alt='" .$row['name'] . "'>";           .pokud by byl potreba i tag v případě že obrázky nejsou dostupné
-            echo "<img src='" . $row['image'] . "'>";
+            echo "<img src='" . $row['image'] . "' alt='" .$row['name'] . "'>";           
             echo "<h3>" . $row['name'] . "</h3>";
             echo "<p class='box'>" . $row['description'] . "</p>";
             echo "<p><b>" . $row['price'] . " Kč</b></p>";
-            echo '<button>Do košíku</button>';
+
+            echo "<form action='kosik.php' method='POST'>";
+            echo "<input type='hidden' name='product_id' value='" . ($row['id']) . "'>";
+            echo "<input type='submit' name='buy_btn' value='Přidat do košíku'>";
+            echo "</form>";
             echo "</div>";
             // KONEC SPRAVNY KOD
             

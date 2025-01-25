@@ -54,6 +54,17 @@ CREATE TABLE order_items (
 )
 ENGINE = InnoDB;
 
+-- novy table kosik (rozpracovaný)
+CREATE TABLE IF NOT EXISTS cart (
+id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+user_id INT NOT NULL,
+product_id INT NOT NULL,
+quantiti INT NOT NULL DEFAULT '1',
+FOREIGN KEY (user_id) REFERENCES users(id),
+FOREIGN KEY (product_id) REFERENCES products(id)
+)
+ENGINE = InnoDB;
+
 INSERT INTO users (name, surname, email, password, role)
 VALUES ('Adam', 'Šváb', 'adam.dl@seznam.cz', md5('12345'), 'admin');
 

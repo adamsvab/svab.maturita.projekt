@@ -35,7 +35,7 @@ if(isset($_POST['login'])){
     $email = mysqli_real_escape_string($con, $_POST['email']); 
     $password = md5(mysqli_real_escape_string($con, $_POST['password'])); 
 
-    $sql="select name, surname, email from `users` where email='$email' and password='$password'";
+    $sql="select id, name, surname, email from `users` where email='$email' and password='$password'";
 
     $sqlstat=mysqli_query($con,$sql);
     if($sqlstat) {
@@ -45,6 +45,7 @@ if(isset($_POST['login'])){
             session_start();
             $row = mysqli_fetch_assoc($sqlstat); 
 
+            $_SESSION['id'] = $row['id'];
             $_SESSION['name'] = $row['name'];
             $_SESSION['surname'] = $row['surname'];
             $_SESSION['email'] = $row['email']; 
