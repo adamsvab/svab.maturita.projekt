@@ -4,7 +4,7 @@ require_once "layout/header.php";
 
 ?>
 
-<link rel="stylesheet" href="css/style.css">
+
 
 <h1>Shrnutí</h1>
 

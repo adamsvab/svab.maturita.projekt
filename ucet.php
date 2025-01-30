@@ -9,7 +9,7 @@ include "connect.php";
 
 ?>
 
-<link rel="stylesheet" href="css/style.css">
+<title>Můj účet</title>
 
 <h1>Můj účet</h1>
 

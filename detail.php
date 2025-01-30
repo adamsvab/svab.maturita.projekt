@@ -9,6 +9,7 @@ $cislo_objednavky = $_GET['cislo_objednavky'];
 
 ?>
 
+<title>Stránka admina</title>
 
 <h1>Detail objednávky č. <?php echo $cislo_objednavky ?></h1>
 
@@ -40,7 +41,7 @@ if(!isset($_SESSION['admin_checked'])) {
     
             $product_id = $row['product_id'];
             $quantity = $row['quantity'];
-            $price = $row['price'];
+            $price = number_format($row['price'], 2);
 
 
 

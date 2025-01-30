@@ -4,7 +4,9 @@ include "connect.php";
 
 
 ?>
-    
+
+<title>Registrace</title>
+
 
 <h1>Registrace</h1>
 

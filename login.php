@@ -7,7 +7,7 @@ include "connect.php";
 
 <h1>Přihlášení</h1>
 
-
+<title>Přihlášení</title>
     
 <form action="login.php" method="post">
 <div class="box">

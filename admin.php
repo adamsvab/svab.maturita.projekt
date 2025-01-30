@@ -5,7 +5,7 @@ require_once "layout/header.php";
 include "connect.php";
 ?>
 
-<link rel="stylesheet" href="css/style.css">
+<title>Stránka admina</title>
 
 <h1>Přehled objednávek</h1>
 
