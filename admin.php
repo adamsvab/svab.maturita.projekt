@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 require_once "layout/header.php";
 include "connect.php";
 ?>

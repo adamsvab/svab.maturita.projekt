@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,19 @@
 <ul>
   <span><li><a href="index.php">Produkty</a></li></span>
   <span><li><a href="kosik.php">Košík</a></li></span>
-  <span><li><a href="ucet.php">Účet</a></li></span>
+  <span><li><a href="ucet.php">
+    
+  <?php
+
+        if(isset($_SESSION['logged_id'])) {
+            echo "Můj účet";
+        } else {
+            echo "Přihlásit se";
+        }           
+
+  ?>
+  </a></li></span>
+
   <span><li><a href="objednavka.php">(Objednávka)</a></li></span>
   <span><li><a href="admin.php">(Přehled)</a></li></span>
   <span><li><a href="login.php">(Přihlášeni)</a></li></span>
@@ -34,5 +47,3 @@
 -->
 
 
-</body>
-</html>

@@ -32,7 +32,7 @@ if($sqlstat) {
             echo "<p class='box'>" . $row['description'] . "</p>";
             echo "<p><b>" . $row['price'] . " Kč</b></p>";
 
-            echo "<form action='kosik.php' method='POST'>";
+            echo "<form action='index.php' method='POST'>";
             echo "<input type='hidden' name='product_id' value='" . ($row['id']) . "'>";
             echo "<input type='submit' name='buy_btn' value='Přidat do košíku'>";
             echo "</form>";
@@ -56,8 +56,49 @@ if($sqlstat) {
 ?>
 
 
+<?php
 
 
+if(isset($_SESSION['logged_id'])) {
+    
+    
+    if(isset($_POST['buy_btn'])){
+
+        $user = $_SESSION['id'];
+        $product = $_POST['product_id'];
+
+
+        
+
+        
+        $sql = "SELECT * FROM CART WHERE user_id = $user AND product_id = $product";
+        $sqlstat = mysqli_query($con, $sql);
+
+            if (mysqli_num_rows($sqlstat) > 0) {
+                
+                $sql = "UPDATE CART SET quantiti = quantiti + 1 WHERE user_id = $user AND product_id = $product";
+                $sqlstat = mysqli_query($con, $sql);
+            } else {
+                
+                $sql = "INSERT INTO CART (user_id, product_id) VALUES ($user, $product)";
+                $sqlstat = mysqli_query($con, $sql);
+            }
+            
+    }
+}   else // TODO NEJSTE PRIHLASENI PRIHLASTE SE
+
+
+
+
+
+
+
+
+
+
+
+
+?>
 
 <?php
 require_once "layout/footer.php";

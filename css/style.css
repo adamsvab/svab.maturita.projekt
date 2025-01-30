@@ -144,19 +144,24 @@ input[name="detail_btn"] {
     
     margin-bottom: 20px;
     
+    padding: 20px;
+    
     
 }
 
 .product-container {
     
-    display: flex;
-    flex-direction: column;
-    row-gap: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 0 auto;
+    padding: 20px;
+
     
 }
 
 
 
 i {
-    color: red;
+    color: #ff6666;
 }

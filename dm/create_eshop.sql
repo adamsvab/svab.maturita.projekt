@@ -96,13 +96,15 @@ CREATE VIEW admin_panel AS
 SELECT orders.id, users.name, users.surname, orders.created_at, orders.state FROM orders INNER JOIN users 
 ON orders.user_id = users.id;
 
-
+INSERT INTO cart (user_id, product_id)
+VALUES ('1','1' );
 
 select * from users;
 select * from products; 
 select * from orders;
 select * from order_items;
 select * from admin_panel;
+select * from cart;
 
 
 
