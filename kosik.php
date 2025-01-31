@@ -27,7 +27,7 @@ require_once "layout/header.php";
                 $num=mysqli_num_rows($sqlstat);
                 if($num>0) {
 
-                    $sql = "SELECT p.image, p.name, c.quantiti, p.price 
+                    $sql = "SELECT p.image, p.name, c.quantiti, p.price, p.id 
                     FROM cart c
                     JOIN products p ON c.product_id = p.id
                     WHERE c.user_id = $user";
@@ -49,13 +49,35 @@ require_once "layout/header.php";
     
     
             while ($row = mysqli_fetch_assoc($sqlstat)) {
+
+                $subtotal = $row['quantiti'] * $row['price'];
+
                 echo '<tr>
                         <td><img src="' . $row['image'] . '" alt="' . $row['name'] . '" width="50"></td>
                         <td>' . $row['name'] . '</td>
-                        <td>' . $row['quantiti'] . '</td>
+                        <td>
+                            <form method="POST">
+
+                                <div class="mnozstvi">
+                                <input type="hidden" name="product_id" value="' . $row['id'] . '">
+                                <input type="number" name="quantiti" value="' . $row['quantiti'] . '" min="1" class="input_mnozstvi">
+                                <button type="submit" name="update_btn" class="update_btn"><i class="fa-sharp fa-solid fa-arrows-rotate" style="color:green;"></i></button>
+                                </div>
+
+                            </form>
+                        
+                        
+                        </td>
                         <td>' . number_format($row['price'], 2) . ' Kč</td>
-                        <td></td>
-                        <td></td>
+                        <td>' . number_format($subtotal, 2) . ' Kč</td>
+                        <td>
+                            <form method="POST">
+
+                                <input type="hidden" name="product_id" value="' . $row['id'] . '">
+                                <button type="submit" name="remove_btn" class="remove_btn"><i class="fa-sharp fa-solid fa-trash" style="color:red;"></i></button>
+                         
+                            </form>
+                        </td>
                       </tr>';
             }
             
@@ -76,42 +98,6 @@ require_once "layout/header.php";
             echo "nejste prihlaseni";
         }
 
-        
-        /*
-        $sql = "SELECT p.image, p.name, c.quantiti, p.price 
-                FROM cart c
-                JOIN products p ON c.product_id = p.id
-                WHERE c.user_id = $user";
-        
-        $sqlstat = mysqli_query($con, $sql);
-
-
-        echo '<table>
-              <thead>
-                    <tr>
-                        <th>Položka</th>
-                        <th>Popis</th>
-                        <th>Množství</th>
-                        <th>Cena</th>
-                        <th>Mezisoučet</th>
-                        <th>Odstranit</th>
-                    </tr>
-              </thead>';
-
-
-        while ($row = mysqli_fetch_assoc($sqlstat)) {
-            echo '<tr>
-                    <td><img src="' . $row['image'] . '" alt="' . $row['name'] . '" width="50"></td>
-                    <td>' . $row['name'] . '</td>
-                    <td>' . $row['quantiti'] . '</td>
-                    <td>' . number_format($row['price'], 2) . ' Kč</td>
-                    <td></td>
-                    <td></td>
-                  </tr>';
-        }
-        
-        echo '</table>';
-        */
     
 
         ?>
@@ -119,16 +105,42 @@ require_once "layout/header.php";
 
 
 
+        <?php
+
+            if (isset($_POST['remove_btn'])) {
+                $product_id = $_POST['product_id'];
+                $sql = "DELETE FROM cart WHERE user_id = $user AND product_id = $product_id";
+                mysqli_query($con, $sql);
+                echo "<meta http-equiv='refresh' content='0'>"; // Obnoví stránku
+
+            }
+
+
+            if (isset($_POST['update_btn'])) {
+
+                $product_id = $_POST['product_id'];
+                $new_quantiti = $_POST['quantiti'];
+                $user = $_SESSION['id']; 
+            
+                
+                $sql = "UPDATE cart SET quantiti = $new_quantiti WHERE product_id = $product_id AND user_id = $user";
+                if (mysqli_query($con, $sql)) {
+                    
+                    echo "<meta http-equiv='refresh' content='0'>"; // Obnoví stránku
+
+                } 
+                
+            }
 
 
 
 
+        ?>
 
 
 
 
-
-
+   
 
 
 <?php

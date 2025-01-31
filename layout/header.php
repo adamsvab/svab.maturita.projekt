@@ -35,16 +35,6 @@
 </nav>
 
 
-<!--
-<div class="navbar">
-    <div class="logo">E-shop</div>
-    <div>
-        <span><a href="index.php">Produkty</a></span>
-        <span><a href="kosik.php">Košík</a></span>
-        <span><a href="login.php">Přihlášení</a></span>
-        <span><a href="objednavka.php">Objednávka</a></span>
-    </div>
-</div>
--->
+
 
 

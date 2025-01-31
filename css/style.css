@@ -164,3 +164,25 @@ input[name="detail_btn"] {
 i {
     color: #ff6666;
 }
+
+
+.remove_btn, .update_btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    
+    
+}
+
+.mnozstvi{
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.input_mnozstvi {
+
+    width: min-content;
+}
