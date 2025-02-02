@@ -29,7 +29,7 @@ if($sqlstat) {
             echo "<div class='product'>";
             echo "<img src='" . $row['image'] . "' alt='" .$row['name'] . "'>";           
             echo "<h3>" . $row['name'] . "</h3>";
-            echo "<p class='box'>" . $row['description'] . "</p>";
+            echo "<p>" . $row['description'] . "</p>";
             echo "<p><b>" . number_format($row['price'], 2) . " Kč</b></p>";
 
             echo "<form action='index.php' method='POST'>";

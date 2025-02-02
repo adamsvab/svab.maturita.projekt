@@ -35,7 +35,7 @@ require_once "layout/header.php";
             $sqlstat = mysqli_query($con, $sql);
     
     
-            echo '<table>
+            echo '<table class="kosik">
                   <thead>
                         <tr>
                             <th>Položka</th>
@@ -46,23 +46,25 @@ require_once "layout/header.php";
                             <th>Odstranit</th>
                         </tr>
                   </thead>';
-    
+            $_SESSION['totalprice'] = 0;        
     
             while ($row = mysqli_fetch_assoc($sqlstat)) {
 
                 $subtotal = $row['quantiti'] * $row['price'];
+                $_SESSION['totalprice'] += $subtotal;
 
-                echo '<tr>
-                        <td><img src="' . $row['image'] . '" alt="' . $row['name'] . '" width="50"></td>
+                echo '<tbody>
+                      <tr>
+                        <td><img src="' . $row['image'] . '" alt="' . $row['name'] . '" width="80"></td>
                         <td>' . $row['name'] . '</td>
                         <td>
                             <form method="POST">
 
-                                <div class="mnozstvi">
+                                
                                 <input type="hidden" name="product_id" value="' . $row['id'] . '">
                                 <input type="number" name="quantiti" value="' . $row['quantiti'] . '" min="1" class="input_mnozstvi">
                                 <button type="submit" name="update_btn" class="update_btn"><i class="fa-sharp fa-solid fa-arrows-rotate" style="color:green;"></i></button>
-                                </div>
+                                
 
                             </form>
                         
@@ -78,14 +80,31 @@ require_once "layout/header.php";
                          
                             </form>
                         </td>
-                      </tr>';
+                      </tr>
+                      </tbody>';
             }
             
             echo '</table>';
 
+            echo '<form action="objednavka.php" method="POST">
+            
+                       <button type="submit" name="checkout_btn">Pokladna</button> 
+
+                  </form>';
+            echo $_SESSION['totalprice'];
+
+            echo '<form method="POST">
+            
+                       <button type="submit" name="removeall_btn">Odstranit košík</button> 
+
+                  </form>';
+
+
+
                 } else {
 
-                    echo "v kosiku nejsou zadne produkty";
+                    echo "V košíku nejsou žádné produkty";
+
                 }
 
 
@@ -132,6 +151,14 @@ require_once "layout/header.php";
                 
             }
 
+
+            if(isset($_POST['removeall_btn'])){
+
+                $user = $_SESSION['id']; 
+                $sql = "DELETE FROM cart WHERE user_id = $user";
+                mysqli_query($con, $sql);
+                echo "<meta http-equiv='refresh' content='0'>"; // Obnoví stránku
+            }
 
 
 

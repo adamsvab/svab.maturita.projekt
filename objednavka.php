@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+include "connect.php";
 require_once "layout/header.php";
 
 ?>
@@ -10,10 +11,8 @@ require_once "layout/header.php";
 
 <h2>Doručovací údaje</h2>
 <form action="objednavka.php" method="post"> 
-<div class="containerr"> <!--spatne napsany container schvalne -->
-    <div class="box">
-        <label for="delivery">Doručení na adresu</label>
-        <input type="checkbox" name="delivery" required><br>
+<div> 
+        <div class="box"> <!-- TODO DORUCENI NA ADRESU-->
         <label for="city">Město:</label><br>
         <input type="text" name="city" required><br>
         <label for="street">Ulice:</label><br>
@@ -25,14 +24,43 @@ require_once "layout/header.php";
     </div>
     <h2>Způsob platby</h2>
     <div class="box">
-        <label for="payment">Dobírka</label>
-        <input type="checkbox" name="payment" required>
+            <!-- TODO DOBIRKA-->
     </div>
         <input type="submit" name="submit" value="Potvrdit">
 </div>
 </form>
 
 
+
+<?php
+
+if(isset($_POST['checkout_btn'])){
+
+    if(isset($_POST['submit'])){
+
+        $city = $_POST['city'];
+        $street = $_POST['street'];
+        $postcode = $_POST['postcode'];
+        $house_number = $_POST['house_number'];
+        $user = $_SESSION['id'];
+        $totalprice = $_SESSION['totalprice'];
+
+        #tatto data potrebuju vlozit do tablu orders
+        #zaroven potrebuju vlozit z tablu cart produkty do tablu order_items
+
+
+
+    }
+
+
+
+} else {
+
+    header('location:kosik.php');
+
+}
+
+?>
 
 
 

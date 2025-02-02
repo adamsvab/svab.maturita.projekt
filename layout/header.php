@@ -26,11 +26,12 @@
 
   ?>
   </a></li></span>
-
+  <!--
   <span><li><a href="objednavka.php">(Objednávka)</a></li></span>
   <span><li><a href="admin.php">(Přehled)</a></li></span>
   <span><li><a href="login.php">(Přihlášeni)</a></li></span>
   <span><li><a href="shrnuti.php">(Shrnutí)</a></li></span>
+  -->
 </ul>
 </nav>
 

@@ -72,7 +72,7 @@ INSERT INTO products (name, image, description, price)
 VALUES ('iPhone 16 128GB černá', 'images/iphone16.webp', 'Mobilní telefon - 6,1" Super Retina XDR OLED, operační paměť 8 GB, vnitřní paměť 128 GB, procesor Apple A18 Bionic, fotoaparát: 48Mpx hlavní + 12Mpx širokoúhlý, GPS, NFC, LTE, 5G, USB-C, voděodolný, baterie 3561 mAh, iOS', '23990'),
 	   ('iPhone 16 Pro 128GB černý titan', 'images/iphone16pro.webp', 'Mobilní telefon - 6,3" Super Retina XDR OLED, operační paměť 8 GB, vnitřní paměť 128 GB, procesor Apple A18 Pro, fotoaparát: 48Mpx hlavní + 48Mpx širokoúhlý + 12Mpx teleobjektiv, GPS, NFC, LTE, 5G, USB-C, voděodolný, baterie 3582 mAh, iOS', '29990'),
        ('iPhone 16 Pro Max 256GB bílý titan', 'images/iphone16promax.webp', 'Mobilní telefon - 6,9" Super Retina XDR OLED, operační paměť 8 GB, vnitřní paměť 256 GB, procesor Apple A18 Pro, fotoaparát: 48Mpx hlavní + 48Mpx širokoúhlý + 12Mpx teleobjektiv, GPS, NFC, LTE, 5G, USB-C, voděodolný, baterie 4685 mAh, iOS', '35990'),
-       ('iPhone 15 128GB černá', 'images/iphone15.webp', 'Mobilní telefon - 6,1" Super Retina XDR OLED, operační paměť 6 GB, vnitřní paměť 128 GB, procesor Apple A16 Bionic, fotoaparát: 48Mpx hlavní + 12Mpx širokoúhlý, GPS, NFC, LTE, 5G, USB-C, voděodolný, iOS', '19990'),
+       ('iPhone 15 128GB černá', 'images/iphone15.webp', 'Mobilní telefon - 6,1" Super Retina XDR OLED, operační paměť 6 GB, vnitřní paměť 128 GB, procesor Apple A16 Bionic, fotoaparát: 48Mpx hlavní + 12Mpx širokoúhlý, GPS, NFC, LTE, 5G, USB-C, voděodolný, baterie 3877 mAh, iOS', '19990'),
        ('iPhone 15 Pro 128GB přírodní titan', 'images/iphone15pro.webp', 'Mobilní telefon - 6,1" Super Retina XDR OLED, operační paměť 8 GB, vnitřní paměť 128 GB, procesor Apple A17 Pro, fotoaparát: 48Mp hlavní + 12Mpx širokoúhlý + 12Mpx teleobjektiv, GPS, NFC, LTE, 5G, USB-C, voděodolný, iOS', '26990'),
 	   ('iPhone 15 Pro Max 512GB černý titan', 'images/iphone15promax.webp', 'Mobilní telefon - 6,7" Super Retina XDR OLED, operační paměť 8 GB, vnitřní paměť 512 GB, procesor Apple A17 Pro, fotoaparát: 48Mpx hlavní + 12Mpx širokoúhlý + 12Mpx teleobjektiv, GPS, NFC, LTE, 5G, USB-C, voděodolný, iOS', '38990'),
        ('iPhone 14 128GB černá', 'images/iphone14.webp', 'Mobilní telefon - 6,1" OLED, vnitřní paměť 128 GB, procesor Apple A15 Bionic, fotoaparát: 12Mpx hlavní + 12Mpx širokoúhlý, přední kamera 12Mpx, GPS, NFC, LTE, 5G, Lightning port, voděodolný, iOS', '14990'),
@@ -96,8 +96,7 @@ CREATE VIEW admin_panel AS
 SELECT orders.id, users.name, users.surname, orders.created_at, orders.state FROM orders INNER JOIN users 
 ON orders.user_id = users.id;
 
-INSERT INTO cart (user_id, product_id)
-VALUES ('1','1' );
+
 
 select * from users;
 select * from products; 
