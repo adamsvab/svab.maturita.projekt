@@ -114,15 +114,6 @@ input[name="change_btn"] {
 }
 
 
-input[name="detail_btn"] {
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    
-}
-
-
-
 
 .product-container {
     display: grid;
@@ -223,7 +214,7 @@ input[name="buy_btn"]:hover {
     border-radius: 4px;
 }
 
-.update_btn, .remove_btn {
+.update_btn, .remove_btn, .edit_btn {
     background: none;
     border: none;
     cursor: pointer;
@@ -231,6 +222,6 @@ input[name="buy_btn"]:hover {
     transition: transform 0.2s;
 }
 
-.update_btn:hover, .remove_btn:hover {
+.update_btn:hover, .remove_btn:hover, .edit_btn:hover {
     transform: scale(1.1); 
 }

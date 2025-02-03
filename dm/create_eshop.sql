@@ -93,7 +93,7 @@ VALUES ('2', '3','1','35990');
 
 
 CREATE VIEW admin_panel AS
-SELECT orders.id, users.name, users.surname, orders.created_at, orders.state FROM orders INNER JOIN users 
+SELECT orders.id, users.name, users.surname, orders.created_at, orders.total_price, orders.state FROM orders INNER JOIN users 
 ON orders.user_id = users.id;
 
 

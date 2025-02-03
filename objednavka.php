@@ -5,7 +5,7 @@ require_once "layout/header.php";
 
 ?>
 
-<link rel="stylesheet" href="css/style.css">
+
 
 <h1>Detail objednávky</h1>
 
@@ -34,9 +34,15 @@ require_once "layout/header.php";
 
 <?php
 
-if(isset($_POST['checkout_btn'])){
+    if(!isset($_POST['checkout_btn'])){
 
-    if(isset($_POST['submit'])){
+        header('location:kosik.php');
+
+    } 
+
+
+
+    if (isset($_POST['submit'])) {
 
         $city = $_POST['city'];
         $street = $_POST['street'];
@@ -44,21 +50,43 @@ if(isset($_POST['checkout_btn'])){
         $house_number = $_POST['house_number'];
         $user = $_SESSION['id'];
         $totalprice = $_SESSION['totalprice'];
-
-        #tatto data potrebuju vlozit do tablu orders
-        #zaroven potrebuju vlozit z tablu cart produkty do tablu order_items
-
-
-
+    
+        $sql = "INSERT INTO orders (user_id, total_price, city, street, house_number, postcode) 
+                VALUES ('$user', '$totalprice', '$city', '$street', '$house_number', '$postcode')";
+        $sqlstat = mysqli_query($con, $sql);
+    
+        if ($sqlstat) {
+            $order_id = mysqli_insert_id($con);
+    
+            $sql = "SELECT * FROM cart WHERE user_id = $user";
+            $sqlstat = mysqli_query($con, $sql);
+    
+            while ($row = mysqli_fetch_assoc($sqlstat)) {
+                $product_id = $row['product_id'];
+                $quantity = $row['quantiti'];
+    
+                $sql_price = "SELECT price FROM products WHERE id = $product_id";
+                $sqlstat_price = mysqli_query($con, $sql_price);
+                $row_price = mysqli_fetch_assoc($sqlstat_price);
+                $price = $row_price['price'];
+    
+                $sql_insert = "INSERT INTO order_items (order_id, product_id, quantity, price) 
+                               VALUES ($order_id, $product_id, $quantity, $price)";
+                mysqli_query($con, $sql_insert);
+            }
+    
+            
+            $sql_delete = "DELETE FROM cart WHERE user_id = $user";
+            mysqli_query($con, $sql_delete);
+    
+            
+            header('location:shrnuti.php');
+            exit();
+        } else {
+            echo "Něco je špatně";
+        }
     }
 
-
-
-} else {
-
-    header('location:kosik.php');
-
-}
 
 ?>
 

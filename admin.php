@@ -15,6 +15,7 @@ include "connect.php";
         <th>Jméno</th>
         <th>Příjmení</th>
         <th>Datum vytvoření</th>
+        <th>Celková cena</th>
         <th>Stav</th>
         <th></th>
     </tr>
@@ -29,7 +30,7 @@ if(!isset($_SESSION['admin_checked'])) {
 } else {
 
 
-$sql = "select id, name, surname, created_at, state from admin_panel";
+$sql = "select id, name, surname, created_at, total_price, state from admin_panel";
 $sqlstat = mysqli_query($con, $sql);
 
 if($sqlstat) {
@@ -41,6 +42,7 @@ if($sqlstat) {
         $name = $row['name'];
         $surname = $row['surname'];
         $create = $row['created_at'];
+        $totalprice = number_format($row['total_price'], 2);
         $state = $row['state'];
         
 
@@ -49,8 +51,9 @@ if($sqlstat) {
             <td>$name</td>
             <td>$surname</td>
             <td>$create</td>
+            <td>$totalprice</td>
             <td>$state</td>
-            <td><a href='detail.php?cislo_objednavky=$id'><input type='submit' name='detail_btn' value='Detail'></a></td>
+            <td><a href='detail.php?cislo_objednavky=$id'><button type='submit' name='edit_btn' class='edit_btn'><i class='fa-solid fa-pen-to-square' style='color:red;'></i></button></a></td>
           </tr>";
         
 
