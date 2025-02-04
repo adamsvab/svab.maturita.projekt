@@ -54,7 +54,7 @@ CREATE TABLE order_items (
 )
 ENGINE = InnoDB;
 
--- novy table kosik (rozpracovaný)
+
 CREATE TABLE IF NOT EXISTS cart (
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 user_id INT NOT NULL,
@@ -78,18 +78,6 @@ VALUES ('iPhone 16 128GB černá', 'images/iphone16.webp', 'Mobilní telefon - 6
        ('iPhone 14 128GB černá', 'images/iphone14.webp', 'Mobilní telefon - 6,1" OLED, vnitřní paměť 128 GB, procesor Apple A15 Bionic, fotoaparát: 12Mpx hlavní + 12Mpx širokoúhlý, přední kamera 12Mpx, GPS, NFC, LTE, 5G, Lightning port, voděodolný, iOS', '14990'),
        ('iPhone 14 Pro 256GB černá', 'images/iphone14pro.webp', 'Mobilní telefon - 6,1" OLED, vnitřní paměť 256 GB, procesor Apple A16 Bionic, fotoaparát: 48Mpx hlavní + 12Mpx širokoúhlý + 12Mpx teleobjektiv, GPS, NFC, LTE, 5G, Lightning port, voděodolný, iOS', '21990'),
        ('iPhone 14 Pro Max 512GB stříbrná', 'images/iphone14promax.webp', 'Mobilní telefon - 6,7" OLED, vnitřní paměť 512 GB, procesor Apple A16 Bionic, fotoaparát: 48Mpx hlavní + 12Mpx širokoúhlý + 12Mpx teleobjektiv, GPS, NFC, LTE, 5G, Lightning port, voděodolný, iOS', '38990');
-
-INSERT INTO orders (user_id, total_price, city, street, house_number, postcode)
-VALUES ('2', '43980','Tišnov','Dlouhá', 1758, '6001' ),
-	   ('3', '35990','Čebín', 'Husitská', '65', '65878');
-
-INSERT INTO order_items (order_id, product_id, quantity, price)
-VALUES ('1', '1','1','23990'),
-	   ('1', '4','1', '19990');
-       
-INSERT INTO order_items (order_id, product_id, quantity, price)
-VALUES ('2', '3','1','35990');
-	   
 
 
 CREATE VIEW admin_panel AS

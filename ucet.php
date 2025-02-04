@@ -24,7 +24,7 @@ include "connect.php";
     
 </div>
 <form action="ucet.php" method="post">
-    <input type="submit" name="logout" value="odhlásit se"> <br>
+    <input type="submit" name="logout" value="Odhlásit se"> <br>
 
 <?php 
     
@@ -40,7 +40,7 @@ include "connect.php";
             if($num>0) {
             echo '<input type="submit" name="admin_btn" value="Admin panel">';
             $_SESSION['admin_checked'] = true;    
-            //echo '<button>Admin panel</button>';
+            
         }
     
     }

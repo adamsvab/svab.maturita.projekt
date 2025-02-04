@@ -84,9 +84,7 @@ input {
 }
 
 
-input[type="checkbox"] {
-    width: auto;
-}
+
 
 
 input[type="submit"] {
@@ -99,6 +97,16 @@ input[name="logout"] {
     width: 460px;
     background-color: red;
     cursor: pointer;
+    display: inline-block;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+input[name="logout"]:hover { 
+    background-color: #a70a0a;
 }
 
 input[name="admin_btn"] {
@@ -161,7 +169,7 @@ input[name="change_btn"] {
     margin: 10px 0;
 }
 
-input[name="buy_btn"] {       
+input[name="buy_btn"], input[name="login"], input[name="register"], input[name="admin_btn"] {       
     display: inline-block;
     padding: 10px 15px;
     background-color: #28a745;
@@ -171,7 +179,7 @@ input[name="buy_btn"] {
     transition: background 0.3s;
 }
 
-input[name="buy_btn"]:hover { 
+input[name="buy_btn"]:hover, input[name="login"]:hover, input[name="register"]:hover, input[name="admin_btn"]:hover { 
     background-color: #218838;
 }
 
@@ -201,7 +209,7 @@ input[name="buy_btn"]:hover {
 
 
 .kosik {
-    width: 60%;
+    width: 100%;
     border-collapse: collapse; 
     
 }

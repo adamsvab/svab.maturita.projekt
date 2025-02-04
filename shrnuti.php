@@ -1,20 +1,34 @@
 <?php
-
+session_start();
+include "connect.php";
 require_once "layout/header.php";
 
 ?>
 
+<?php
 
 
-<h1>Shrnutí</h1>
+if (isset($_GET['id'])) {
+    $order_id = $_GET['id'];
+    $user = $_SESSION['id'];
+    $sql = "SELECT * FROM Orders WHERE id = $order_id AND user_id = $user";
+    $sqlstat = mysqli_query($con, $sql);
 
-<h2>Vaše objednávka číslo X byla vytvořena</h2>
+    if (mysqli_num_rows($sqlstat) > 0) {
+        $row = mysqli_fetch_assoc($sqlstat);
+        echo "<h1>Shrnutí</h1>";
+        echo "<h2>Vaše objednávka číslo " . $row['id'] . " byla vytvořena</h2>";
+        echo "<div class='box'>Vaše objednávka bude doručena na adresu: " . $row['street'] . " " . $row['house_number'] . ", " . $row['postcode'] . " " . $row['city'] . "</div>";
+    } else {
+        echo "Objednávka nebyla nalezena.";
+    }
+} else {
+    
+    header('location:kosik.php');
+}
 
-<div class="box">
-    info o produktech <br>
-    info o doprave <br>
-    info o platbe <br>
-</div>
+
+?>
 
 
 

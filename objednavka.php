@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include "connect.php";
 require_once "layout/header.php";
@@ -11,8 +12,9 @@ require_once "layout/header.php";
 
 <h2>Doručovací údaje</h2>
 <form action="objednavka.php" method="post"> 
-<div> 
-        <div class="box"> <!-- TODO DORUCENI NA ADRESU-->
+    <div> 
+        <div class="box"> 
+        <h3>Doručení na adresu</h3>    
         <label for="city">Město:</label><br>
         <input type="text" name="city" required><br>
         <label for="street">Ulice:</label><br>
@@ -22,9 +24,10 @@ require_once "layout/header.php";
         <label for="house_number">č.p:</label><br>
         <input type="number" name="house_number" required>
     </div>
+
     <h2>Způsob platby</h2>
     <div class="box">
-            <!-- TODO DOBIRKA-->
+        <h3>Dobírka</h3>        
     </div>
         <input type="submit" name="submit" value="Potvrdit">
 </div>
@@ -44,10 +47,10 @@ require_once "layout/header.php";
 
     if (isset($_POST['submit'])) {
 
-        $city = $_POST['city'];
-        $street = $_POST['street'];
-        $postcode = $_POST['postcode'];
-        $house_number = $_POST['house_number'];
+        $city = mysqli_escape_string($con, $_POST['city']);
+        $street = mysqli_escape_string($con, $_POST['street']);
+        $postcode = mysqli_escape_string($con, $_POST['postcode']);
+        $house_number = mysqli_escape_string($con, $_POST['house_number']);
         $user = $_SESSION['id'];
         $totalprice = $_SESSION['totalprice'];
     
@@ -80,7 +83,7 @@ require_once "layout/header.php";
             mysqli_query($con, $sql_delete);
     
             
-            header('location:shrnuti.php');
+            header('location: shrnuti.php?id=' . $order_id);
             exit();
         } else {
             echo "Něco je špatně";
