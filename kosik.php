@@ -51,7 +51,7 @@ require_once "layout/header.php";
             while ($row = mysqli_fetch_assoc($sqlstat)) {
 
                 $subtotal = $row['quantiti'] * $row['price'];
-                $_SESSION['totalprice'] += $subtotal;
+                $totalprice = $_SESSION['totalprice'] += $subtotal;
 
                 echo '<tbody>
                       <tr>
@@ -70,8 +70,8 @@ require_once "layout/header.php";
                         
                         
                         </td>
-                        <td>' . number_format($row['price'], 2) . ' Kč</td>
-                        <td>' . number_format($subtotal, 2) . ' Kč</td>
+                        <td>' . number_format($row['price']) . ' Kč</td>
+                        <td>' . number_format($subtotal) . ' Kč</td>
                         <td>
                             <form method="POST">
 
@@ -86,19 +86,19 @@ require_once "layout/header.php";
             
             echo '</table>';
 
+
+
+
+            echo '<div class="toolbox">';
             echo '<form action="objednavka.php" method="POST">
-            
-                       <button type="submit" name="checkout_btn">Pokladna</button> 
-
+                       <button type="submit" name="checkout_btn" class="checkout" style="width: 100%;">Dokončit objednávku</button> 
                   </form>';
-            echo $_SESSION['totalprice'];
-
             echo '<form method="POST">
-            
-                       <button type="submit" name="removeall_btn">Odstranit košík</button> 
-
+                  <button type="submit" name="removeall_btn" class="removeall" style="width: 100%;">Vymazat celý košík</button> 
                   </form>';
-
+            echo '<span class="totalprice">Celková cena: ' . number_format($totalprice) . ' Kč</span>';
+            
+            echo '</div>';
 
 
                 } else {

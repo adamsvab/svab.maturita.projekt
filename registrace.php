@@ -72,12 +72,12 @@ if(isset($_POST['register'])){
 <?php
 
 if($user){
-    echo '<script>alert("Tento email už je zaregistrován")</script>';;
+    echo '<script>alert("Tento email už je zaregistrován")</script>';
 }
 
 
 if($success){
-    echo '<script>alert("Účet byl vytvořen")</script>';;
+    echo '<script>alert("Účet byl vytvořen")</script>';
 }
    
 

@@ -30,7 +30,7 @@ if($sqlstat) {
             echo "<img src='" . $row['image'] . "' alt='" .$row['name'] . "'>";           
             echo "<h3>" . $row['name'] . "</h3>";
             echo "<p>" . $row['description'] . "</p>";
-            echo "<p><b>" . number_format($row['price'], 2) . " Kč</b></p>";
+            echo "<p><b>" . number_format($row['price']) . " Kč</b></p>";
 
             echo "<form action='index.php' method='POST'>";
             echo "<input type='hidden' name='product_id' value='" . ($row['id']) . "'>";
@@ -47,16 +47,18 @@ if($sqlstat) {
 <?php
 
 
-if(isset($_SESSION['logged_id'])) {
+ 
     
     
     if(isset($_POST['buy_btn'])){
 
+
+        if(isset($_SESSION['logged_id'])) {
+
+
+
         $user = $_SESSION['id'];
         $product = $_POST['product_id'];
-
-
-        
 
         
         $sql = "SELECT * FROM CART WHERE user_id = $user AND product_id = $product";
@@ -71,13 +73,22 @@ if(isset($_SESSION['logged_id'])) {
                 $sql = "INSERT INTO CART (user_id, product_id) VALUES ($user, $product)";
                 $sqlstat = mysqli_query($con, $sql);
             }
-            
+        
+        } else {
+
+            echo '<script>alert("Nejste přihlášeni, pro přidání zboží se prosím přihlašte.")</script>';
+        }
+      
     }
-}   else // TODO NEJSTE PRIHLASENI PRIHLASTE SE
+   
+  
+
+    
 
 
 
 
+  
 
 
 
