@@ -20,7 +20,7 @@ require_once "layout/header.php";
         <label for="street">Ulice:</label><br>
         <input type="text" name="street" required><br>
         <label for="postcode">PSČ:</label><br>
-        <input type="number" name="postcode" style="width: 100%;" required><br>
+        <input type="number" name="postcode" style="width: 100%;"  min="10000" max="99999" required><br>
         <label for="house_number">č.p:</label><br>
         <input type="number" name="house_number" style="width: 100%;" required>
     </div>

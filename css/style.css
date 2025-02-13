@@ -7,11 +7,12 @@ body {
     align-items: center;
     flex-direction: column;
     text-align: center;
+    margin: 0;
 }
 
 
 
-h2, h4 {
+h2 {
     text-align: center;
 }
 
@@ -91,7 +92,7 @@ input, button {
 }
 
 
-input[type="text"] {
+input[type="text"], input[type="password"], input[type="email"] {
 
     width: 100%;
 }
@@ -179,7 +180,7 @@ input[name="change_btn"] {
     margin: 10px 0;
 }
 
-input[name="buy_btn"], input[name="login"], input[name="register"], input[name="admin_btn"], input[name="submit"], .checkout {       
+input[name="buy_btn"], input[name="login"], input[name="register"], input[name="admin_btn"], input[name="submit"], input[name="change_btn"], .checkout  {       
     display: inline-block;
     padding: 10px 15px;
     background-color: #28a745;
@@ -189,14 +190,9 @@ input[name="buy_btn"], input[name="login"], input[name="register"], input[name="
     transition: background 0.3s;
 }
 
-input[name="buy_btn"]:hover, input[name="login"]:hover, input[name="register"]:hover, input[name="admin_btn"]:hover, input[name="submit"]:hover, .checkout:hover { 
+input[name="buy_btn"]:hover, input[name="login"]:hover, input[name="register"]:hover, input[name="admin_btn"]:hover, input[name="submit"]:hover, input[name="change_btn"]:hover .checkout:hover { 
     background-color: #218838;
 }
-
-
-
-
-
 
 
 .kosik th {
@@ -246,9 +242,6 @@ input[name="buy_btn"]:hover, input[name="login"]:hover, input[name="register"]:h
 
 
 
-
-
-
 @media (max-width: 768px) {
     .navbar ul {
         flex-direction: column;
@@ -272,9 +265,6 @@ input[name="buy_btn"]:hover, input[name="login"]:hover, input[name="register"]:h
         padding: 10px;
     }
 }
-
-
-
 
 
 .totalprice {

@@ -15,7 +15,7 @@ $cislo_objednavky = $_GET['cislo_objednavky'];
 
 <table>
     <tr>
-        <th>Číslo produktu</th>
+        <th>Název produktu</th>
         <th>Množství</th>
         <th>Cena</th>       
     </tr>
@@ -44,10 +44,17 @@ if(!isset($_SESSION['admin_checked'])) {
             $price = number_format($row['price'], 2);
 
 
+            $sql = "select * from products where id = $product_id";
+            $sqlstat2 = mysqli_query($con, $sql);
+
+            while($row = mysqli_fetch_assoc($sqlstat2)) {
+
+                $product_name = $row['name'];
+            }
 
 
             echo "<tr>        
-                    <td>$product_id</td>
+                    <td>$product_name</td>
                     <td>$quantity</td>
                     <td>$price Kč</td>                    
                   </tr>";            
@@ -81,7 +88,7 @@ if(isset($_POST['change_btn'])){
     $sqlstat = mysqli_query($con, $sql);
 
     if($sqlstat) {
-         
+
         echo '<script>alert("Stav objednávky byl změněn na sent")</script>';
     } else {
         
