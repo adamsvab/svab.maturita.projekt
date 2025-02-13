@@ -114,7 +114,7 @@ require_once "layout/header.php";
 
         } else {
 
-            echo "nejste prihlaseni";
+            echo "Nejste přihlášeni, přihlašte se.";
         }
 
     

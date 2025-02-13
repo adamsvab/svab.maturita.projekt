@@ -13,17 +13,17 @@ include "connect.php";
 
 <h1>Můj účet</h1>
 
-
-<div class="box">
-<label>Jméno:</label><br>
-    <?php echo $_SESSION['name']."<br>"; ?>
-<label>Příjmení</label><br>
-    <?php echo $_SESSION['surname']."<br>"; ?>
-<label>Email:</label><br>
-    <?php echo $_SESSION['email']."<br>"; ?> 
-    
-</div>
-<form action="ucet.php" method="post">
+<div class="box.container">
+    <div class="box">
+    <label>Jméno:</label><br>
+        <?php echo $_SESSION['name']."<br>"; ?>
+    <label>Příjmení</label><br>
+        <?php echo $_SESSION['surname']."<br>"; ?>
+    <label>Email:</label><br>
+        <?php echo $_SESSION['email']."<br>"; ?> 
+        
+    </div>
+    <form action="ucet.php" method="post">
     <input type="submit" name="logout" value="Odhlásit se"> <br>
 
 <?php 
@@ -40,7 +40,7 @@ include "connect.php";
             if($num>0) {
             echo '<input type="submit" name="admin_btn" value="Admin panel">';
             $_SESSION['admin_checked'] = true;    
-            
+            echo "</div>";
         }
     
     }

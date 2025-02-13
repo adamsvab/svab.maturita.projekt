@@ -24,7 +24,7 @@ include "connect.php";
         <label for="password">Heslo:</label><br>
         <input type="password" name="password" required><br>    
     </div>
-        <input type="submit" name="register" value="registrovat se">
+        <input type="submit" name="register" value="Registrovat se">
 </form>
 
 <div>
@@ -55,7 +55,7 @@ if(isset($_POST['register'])){
             $user=1;
         } else {
             $sql="insert into `users` (name, surname, email, password)
-                  values ('$name', '$surname', '$email', md5($password))";
+                  values ('$name', '$surname', '$email', md5('$password'))";
             $sqlstat=mysqli_query($con,$sql);
             if($sqlstat) {
                 $success=1;
