@@ -233,10 +233,6 @@ input[name="buy_btn"]:hover, input[name="login"]:hover, input[name="register"]:h
     .navbar span a {
         padding: 10px;
     }
-    .box {
-        width: 100%;
-    }
-    
     table {
         display: block;
         overflow-x: auto;
