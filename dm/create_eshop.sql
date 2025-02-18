@@ -86,12 +86,7 @@ ON orders.user_id = users.id;
 
 
 
-select * from users;
-select * from products; 
-select * from orders;
-select * from order_items;
-select * from admin_panel;
-select * from cart;
+
 
 
 

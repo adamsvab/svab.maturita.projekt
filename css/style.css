@@ -234,8 +234,7 @@ input[name="buy_btn"]:hover, input[name="login"]:hover, input[name="register"]:h
         padding: 10px;
     }
     table {
-        display: block;
-        overflow-x: auto;
+        width: 100%;
     }
     .kosik th, .kosik td {
         padding: 10px;
